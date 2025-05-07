@@ -75,8 +75,8 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 | POST        | `/api/pontos-leitura`| Cria um novo ponto de leitura | `{"idPonto": 1, "idPatio": 1, "nomePonto": "Entrada", "descricao": "Ponto de entrada do pátio SP"}` | `201 Created` com `PontosLeituraDTO` |
 | GET         | `/api/pontos-leitura`| Lista pontos (paginado)       | -                                                              | `200 OK` com página de `PontosLeituraDTO` |
 | GET         | `/api/pontos-leitura/{idPonto}` | Busca ponto por ID     | -                                                              | `200 OK` com `PontosLeituraDTO` |
-| PUT         | `/api/pontos-leitura/{idPonto}` | Atualiza um ponto      | `{"idPonto": 1, "idPatio": 1, "nomePonto": "Saída Principal", "descricao": "Ponto de saída do pátio SP"}` | `200 OK` com `PontosLeituraDTO` |
-| DELETE      | `/api/pontos-leitura/{idPonto}` | Deleta um ponto      | -                                                              | `200 OK` com mensagem       |
+| PUT         | `/api/pontos-leitura/{idPonto}` | Atualiza um ponto por ID     | `{"idPonto": 1, "idPatio": 1, "nomePonto": "Saída Principal", "descricao": "Ponto de saída do pátio SP"}` | `200 OK` com `PontosLeituraDTO` |
+| DELETE      | `/api/pontos-leitura/{idPonto}` | Deleta um ponto por ID      | -                                                              | `200 OK` com mensagem       |
 
 ### Motos (`/api/motos`)
 
