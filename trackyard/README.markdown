@@ -127,6 +127,6 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 
 ## Integrantes
 
-- RM555516 - Luigi Berzaghi
+- RM555516 - Luigi Berzaghi Hernandes Sespedes
 - RM559093 - Cauã Dos Santos Souza
 - RM558445 - Guilherme Pelissari Feitosa
