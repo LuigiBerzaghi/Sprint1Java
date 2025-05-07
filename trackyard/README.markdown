@@ -62,7 +62,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 
 | Método      | Endpoint         | Descrição                     | Corpo da Requisição (JSON)                                      | Resposta de Sucesso         |
 |-------------|------------------|-------------------------------|----------------------------------------------------------------|-----------------------------|
-| POST        | `/api/patios`    | Cria um novo pátio            | `{"idPatio": 1, "nome": "Pátio master mottu", "telefone": "41-5555-6666", "endereco": "Rua Nova, 789, SP"}` | `201 Created` com `PatiosDTO` |
+| POST        | `/api/patios`    | Cria um novo pátio            | `{"idPatio": 1, "nome": "Pátio master mottu", "telefone": "41-4444-5555", "endereco": "Rua Antiga, 789, SP"}` | `201 Created` com `PatiosDTO` |
 | GET         | `/api/patios`    | Lista pátios (paginado)       | -                                                              | `200 OK` com página de `PatiosDTO` |
 | GET         | `/api/patios/{idPatio}` | Busca pátio por ID         | -                                                              | `200 OK` com `PatiosDTO`    |
 | PUT         | `/api/patios/{idPatio}` | Atualiza um pátio por ID  | `{"idPatio": 1, "nome": "Pátio master mottu novo", "telefone": "41-5555-6666", "endereco": "Rua Nova, 789, SP"}` | `200 OK` com `PatiosDTO` |
