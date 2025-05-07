@@ -54,7 +54,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 - `com.mottu.trackyard.entity`: Contém as entidades modelo.
 - `com.mottu.trackyard.repository`: Contém os repositórios JPA.
 - `com.mottu.trackyard.dto`: Contém os DTOs para transferência de dados.
-- `com.mottu.trackyard.exception`: Centraliza o tratamento de exceções.
+- `com.mottu.trackyard.exception`: Contém a classe que centraliza o tratamento de exceções.
 
 ## Endpoints da API
 
