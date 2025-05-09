@@ -1,4 +1,4 @@
-# TrackYard - Sistema de Gerenciamento de Pátios e Movimentações
+# TrackYard - Sistema de Gerenciamento de Pátios
 
 **TrackYard** é uma aplicação Java desenvolvida com o objetivo de gerenciar a organização das motos da Mottu dentro dos pátios, ajudando a evitar a perda inesperada de motos.
 
