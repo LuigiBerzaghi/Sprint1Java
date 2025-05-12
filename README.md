@@ -36,8 +36,6 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-A aplicação estará disponível em `http://localhost:8080`.
-
 ### 3. Acessar o Banco H2
 
 O projeto usa o banco de dados H2 em memória. Acesse em:
