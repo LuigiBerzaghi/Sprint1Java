@@ -109,6 +109,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
      - Abra o link no Postman.
      - Certifique-se de que a aplicação está rodando (`http://localhost:8080`).
      - Execute as requisições da coleção e verifique as respostas.
+     - Observação: O Postman apenas executa requisições do tipo localhost dentro do app Postman, ou seja, não é possível fazer requisições na web.
 
 2. **Verificação Manual no H2 Console**
 
