@@ -124,7 +124,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 
 3. **Cenários de Erro**
 
-   - Teste casos como criar um pátio com `idPatio` duplicado ou deletar uma moto inexistente.
+   - Teste casos como criar um pátio com `idPatio` duplicado ou deletar uma moto inexistente, por exemplo.
 
 ## Integrantes
 
