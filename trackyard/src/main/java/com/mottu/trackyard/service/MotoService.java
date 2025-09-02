@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MotoService {
@@ -17,14 +18,26 @@ public class MotoService {
     public MotoService(MotosRepository motosRepository) {
         this.motosRepository = motosRepository;
     }
+    
+    private String generateId() {
+        String shortUuid = java.util.UUID.randomUUID().toString().substring(0, 8);
+        return "MOTO-" + shortUuid;
+      }
 
+    @Transactional
     public MotosDTO createMoto(MotosDTO dto) {
-        Motos moto = new Motos();
-        moto.setIdMoto(dto.idMoto());
-        moto.setModelo(dto.modelo());
-        moto.setPlaca(dto.placa());
-        motosRepository.save(moto);
-        return new MotosDTO(moto.getIdMoto(), moto.getModelo(), moto.getPlaca());
+      // valida placa única (opcional mas recomendado)
+      if (motosRepository.existsByPlaca(dto.placa())) {
+        throw new IllegalArgumentException("Já existe moto com a placa " + dto.placa());
+      }
+
+      var m = new Motos();
+      m.setIdMoto(generateId());          
+      m.setModelo(dto.modelo());
+      m.setPlaca(dto.placa());
+
+      var saved = motosRepository.save(m);
+      return new MotosDTO(saved.getIdMoto(), saved.getModelo(), saved.getPlaca());
     }
 
     //Pagina todas as motos
@@ -46,8 +59,8 @@ public class MotoService {
     public MotosDTO updateMoto(String idMoto, MotosDTO dto) {
         Motos moto = motosRepository.findById(idMoto)
             .orElseThrow(() -> new RuntimeException("Moto não encontrada"));
-        if (!idMoto.equals(dto.idMoto())) {
-            throw new RuntimeException("ID da moto no corpo da requisição não corresponde ao ID na URL");
+        if (!moto.getPlaca().equals(dto.placa()) && motosRepository.existsByPlaca(dto.placa())) {
+            throw new IllegalArgumentException("Já existe moto com a placa " + dto.placa());
         }
         moto.setModelo(dto.modelo());
         moto.setPlaca(dto.placa());

@@ -13,7 +13,7 @@ public class Motos {
 	
 	//Atributos
     @Id
-    @NotBlank(message = "ID da moto é obrigatório")
+  //@NotBlank(message = "ID da moto é obrigatório")
     @Size(max = 50, message = "ID da moto deve ter no máximo 50 caracteres")
     @Column(name = "id_moto", length = 50)
     private String idMoto;

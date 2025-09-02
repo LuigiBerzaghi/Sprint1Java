@@ -1,75 +1,85 @@
 package com.mottu.trackyard.service;
 
 import com.mottu.trackyard.dto.PatiosDTO;
+import com.mottu.trackyard.dto.PontosLeituraDTO;
 import com.mottu.trackyard.entity.Patios;
 import com.mottu.trackyard.repository.PatiosRepository;
+import com.mottu.trackyard.repository.PontosLeituraRepository;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 public class PatioService {
 
     private final PatiosRepository patiosRepository;
+    private final PontosLeituraRepository pontosLeituraRepository;
 
-    public PatioService(PatiosRepository patiosRepository) {
-        this.patiosRepository = patiosRepository;
-    }
+    public PatioService(PatiosRepository patiosRepository, PontosLeituraRepository pontosLeituraRepository) {
+		this.patiosRepository = patiosRepository;
+		this.pontosLeituraRepository = pontosLeituraRepository;
+}
 
-    //Cria um pátio
+    // CREATE - não usa id do DTO (deixa o JPA gerar)
     public PatiosDTO createPatio(PatiosDTO dto) {
-        Optional<Patios> existingPatio = patiosRepository.findById(dto.idPatio());
-        if (existingPatio.isPresent()) {
-            throw new RuntimeException("Pátio com ID " + dto.idPatio() + " já existe");
-        }
-
         Patios patio = new Patios();
-        patio.setIdPatio(dto.idPatio());
+        // NÃO setar o ID aqui!
         patio.setNome(dto.nome());
         patio.setTelefone(dto.telefone());
         patio.setEndereco(dto.endereco());
-        patiosRepository.save(patio);
 
-        return new PatiosDTO(patio.getIdPatio(), patio.getNome(), patio.getTelefone(), patio.getEndereco());
+        Patios saved = patiosRepository.save(patio); // ID gerado aqui
+        return new PatiosDTO(saved.getIdPatio(), saved.getNome(), saved.getTelefone(), saved.getEndereco());
     }
 
-    //Atualiza determinado pátio
+    // UPDATE - usa o id do path; não exige id no DTO
     public PatiosDTO updatePatio(Long idPatio, PatiosDTO dto) {
         Patios patio = patiosRepository.findById(idPatio)
-            .orElseThrow(() -> new RuntimeException("Pátio não encontrado"));
+                .orElseThrow(() -> new NoSuchElementException("Pátio não encontrado"));
 
-        if (!idPatio.equals(dto.idPatio())) {
-            throw new RuntimeException("ID do pátio no corpo da requisição não corresponde ao ID na URL");
-        }
-
+        
         patio.setNome(dto.nome());
         patio.setTelefone(dto.telefone());
         patio.setEndereco(dto.endereco());
-        patiosRepository.save(patio);
 
-        return new PatiosDTO(patio.getIdPatio(), patio.getNome(), patio.getTelefone(), patio.getEndereco());
+        Patios saved = patiosRepository.save(patio);
+        return new PatiosDTO(saved.getIdPatio(), saved.getNome(), saved.getTelefone(), saved.getEndereco());
     }
 
-    
-    //Pagina os pátios existentes
+    // LIST
     public Page<PatiosDTO> getAllPatios(Pageable pageable) {
         return patiosRepository.findAll(pageable)
-            .map(patio -> new PatiosDTO(patio.getIdPatio(), patio.getNome(), patio.getTelefone(), patio.getEndereco()));
+                .map(p -> new PatiosDTO(p.getIdPatio(), p.getNome(), p.getTelefone(), p.getEndereco()));
     }
 
-    //Busca determinado pátio
+    // READ
     public PatiosDTO getPatioById(Long idPatio) {
-        Patios patio = patiosRepository.findById(idPatio)
-            .orElseThrow(() -> new RuntimeException("Pátio não encontrado"));
-        return new PatiosDTO(patio.getIdPatio(), patio.getNome(), patio.getTelefone(), patio.getEndereco());
+        Patios p = patiosRepository.findById(idPatio)
+                .orElseThrow(() -> new NoSuchElementException("Pátio não encontrado"));
+        return new PatiosDTO(p.getIdPatio(), p.getNome(), p.getTelefone(), p.getEndereco());
     }
 
-    //Deleta determinado pátio
+    // DELETE
     public void deletePatio(Long idPatio) {
-        Patios patio = patiosRepository.findById(idPatio)
-            .orElseThrow(() -> new RuntimeException("Pátio não encontrado"));
-        patiosRepository.delete(patio);
+        if (!patiosRepository.existsById(idPatio)) {
+            throw new NoSuchElementException("Pátio não encontrado");
+        }
+        patiosRepository.deleteById(idPatio);
+    }
+    
+    public Page<PontosLeituraDTO> getPontosByPatio(Long idPatio, Pageable pageable) {
+        if (!patiosRepository.existsById(idPatio)) {
+            throw new NoSuchElementException("Pátio não encontrado");
+        }
+        return pontosLeituraRepository.findByPatioIdPatio(idPatio, pageable)
+                .map(p -> new PontosLeituraDTO(
+                        p.getIdPonto(),
+                        p.getPatio().getIdPatio(),
+                        p.getNomePonto(),
+                        p.getDescricao()
+                ));
     }
 }

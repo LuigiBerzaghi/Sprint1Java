@@ -13,6 +13,7 @@ public class Patios {
 	
 	//Atributos
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_patio")
     private Long idPatio;
 

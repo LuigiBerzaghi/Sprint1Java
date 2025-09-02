@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public record MotosDTO(
-    @NotBlank(message = "ID da moto é obrigatório")
+ // @NotBlank(message = "ID da moto é obrigatório")
     @Size(max = 50, message = "ID da moto deve ter no máximo 50 caracteres")
     String idMoto,
 

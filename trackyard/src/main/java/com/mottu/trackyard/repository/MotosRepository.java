@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MotosRepository extends JpaRepository<Motos, String> {
     Motos findByPlaca(String placa);
+    boolean existsByPlaca(String placa);
 }

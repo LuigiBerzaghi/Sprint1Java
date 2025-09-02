@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -40,25 +41,28 @@ public class PontosLeituraService {
     }
 
     //Atualiza determinado ponto de leitura
-    public PontosLeituraDTO updatePontoLeitura(Long idPonto, PontosLeituraDTO dto) {
-        PontosLeitura ponto = pontosLeituraRepository.findById(idPonto)
-            .orElseThrow(() -> new RuntimeException("Ponto de leitura não encontrado"));
+    public PontosLeituraDTO updatePontoLeitura(Long id, PontosLeituraDTO dto) {
+        var entity = pontosLeituraRepository.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("Ponto de leitura não encontrado"));
 
-        if (!idPonto.equals(dto.idPonto())) {
-            throw new RuntimeException("ID do ponto de leitura no corpo da requisição não corresponde ao ID na URL");
+        if (dto.idPatio() == null) { // evita getReferenceById(null)
+            throw new IllegalArgumentException("Pátio é obrigatório");
         }
 
-        Optional<Patios> patio = patiosRepository.findById(dto.idPatio());
-        if (patio.isEmpty()) {
-            throw new RuntimeException("Pátio não encontrado");
-        }
+        var patio = patiosRepository.findById(dto.idPatio())
+            .orElseThrow(() -> new NoSuchElementException("Pátio não encontrado"));
 
-        ponto.setPatio(patio.get());
-        ponto.setNomePonto(dto.nomePonto());
-        ponto.setDescricao(dto.descricao());
-        pontosLeituraRepository.save(ponto);
+        entity.setPatio(patio);
+        entity.setNomePonto(dto.nomePonto());
+        entity.setDescricao(dto.descricao());
 
-        return new PontosLeituraDTO(ponto.getIdPonto(), ponto.getPatio().getIdPatio(), ponto.getNomePonto(), ponto.getDescricao());
+        var saved = pontosLeituraRepository.save(entity);
+        return new PontosLeituraDTO(
+            saved.getIdPonto(),
+            saved.getPatio().getIdPatio(),
+            saved.getNomePonto(),
+            saved.getDescricao()
+        );
     }
 
     //Pagina pontos de leitura

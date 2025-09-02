@@ -14,6 +14,7 @@ public class PontosLeitura {
 	
 	//Atributos
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ponto")
     private Long idPonto;
 

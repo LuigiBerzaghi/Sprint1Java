@@ -24,6 +24,9 @@
                    th:href="@{|/motos/${m.idMoto}/editar|}">Editar</a>
                 <a class="btn btn-sm btn-outline-danger"
                    th:href="@{|/motos/${m.idMoto}/excluir|}">Excluir</a>
+                <a class="btn btn-sm btn-outline-info"
+  				   th:href="@{|/motos/${m.idMoto}/movimentacoes|}">Movimentações</a>
+                
             </td>
         </tr>
         </tbody>
@@ -31,7 +34,6 @@
 
     <!-- paginação simples -->
     <nav th:if="${page.totalPages > 1}">
-    <div th:if="${msgSuccess}" class="alert alert-success" th:text="${msgSuccess}"></div>
    
         <ul class="pagination">
             <li class="page-item" th:classappend="${page.first} ? 'disabled'">
