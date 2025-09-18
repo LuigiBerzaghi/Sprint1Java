@@ -14,7 +14,6 @@
 - **Java 17** ou superior.
 - **Maven**.
 - Uma IDE.
-- **Postman** ou outro cliente HTTP para testar os endpoints.
 
 ## Configuração e Execução
 
@@ -107,7 +106,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 
 ## Testes
 
-1. **Usando o Workspace do Postman**
+1. **Outra alternativa aos testes é usando o Workspace do Postman**
 
    - Um workspace com requisições pré-definidas foi criado para facilitar os testes. Acesse em:
 
