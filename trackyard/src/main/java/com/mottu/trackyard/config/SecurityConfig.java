@@ -68,7 +68,6 @@ public class SecurityConfig {
 	        .logoutSuccessUrl("/login?logout")
 	        .permitAll()
 	      )
-	    // Se for usar H2-console em dev, descomenta:
 	    .headers(h -> h.frameOptions(o -> o.disable()))
 	    .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
 	    .exceptionHandling(e -> e.accessDeniedHandler((req,res,ex) ->
