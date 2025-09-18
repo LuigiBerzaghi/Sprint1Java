@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ErrorPagesController {
   @GetMapping("/acesso-negado")
   public String acessoNegado() {
-    return "fragments/acesso-negado"; // templates/acesso-negado.html
+    return "fragments/acesso-negado"; 
   }
 }
 
