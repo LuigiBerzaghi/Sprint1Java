@@ -57,7 +57,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 ## Estrutura do Projeto
 
 - `com.mottu.trackyard.controller`: Contém os controladores REST.
-- - `com.mottu.trackyard.controller.web`: Contém os controladores REST para ThymeLeaf.
+- `com.mottu.trackyard.controller.web`: Contém os controladores REST para ThymeLeaf.
 - `com.mottu.trackyard.service`: Contém os serviços.
 - `com.mottu.trackyard.entity`: Contém as entidades modelo.
 - `com.mottu.trackyard.repository`: Contém os repositórios JPA.
