@@ -44,7 +44,11 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 - Username: `sa`
 - Password: (deixe em branco)
 
-### 4. Acessar o apolicativo via login
+### 4. Testes
+
+  Para realizar os testes na api, basta abrir a tela de login, seguindo a seguinte rota:
+  [login](http://http://localhost:8080/login)
+
   Para acessar o app como um administrador use:
   - Usuário: admin
   - Senha: admin123
@@ -52,6 +56,8 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
   Para acessar o app como um usuário comum use:
   - Usuário: user
   - Senha: user123
+
+  Feito isso, é possível testar a API através da interface gráfica.
 
 ## Estrutura do Projeto
 
@@ -103,35 +109,6 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 |-------------|--------------------------|-------------------------------|----------------------------------------------------------------|-----------------------------|
 | POST        | `/api/movimentacoes`     | Registra uma movimentação     | `{"idMoto": "MOTO001", "idPonto": 1, "dataHora": "2025-05-07T10:00:00"}` | `201 Created` |
 | GET         | `/api/movimentacoes/{idMovimentacao}` | Lista movimentação por ID | -                                                      | `200 OK` com `MovimentacoesDTO` |
-
-## Testes
-
-1. **Outra alternativa aos testes é usando o Workspace do Postman**
-
-   - Um workspace com requisições pré-definidas foi criado para facilitar os testes. Acesse em:
-
-     [TrackYard API Tests](https://bold-zodiac-707210.postman.co/workspace/Personal-Workspace~4701d561-f092-46f6-a63c-0560d2fd1507/collection/39387306-06cd5d63-7cab-4aaf-9c69-e5983de04042?action=share&creator=39387306)
-
-   - **Instruções**:
-     - Abra o link no Postman.
-     - Certifique-se de que a aplicação está rodando (`http://localhost:8080`).
-     - Execute as requisições da coleção e verifique as respostas.
-     - Observação: O Postman apenas executa requisições do tipo localhost dentro do app Postman, ou seja, não é possível fazer requisições na web.
-
-2. **Verificação Manual no H2 Console**
-
-   - Acesse `http://localhost:8080/h2-console`.
-   - Execute:
-     ```sql
-     SELECT * FROM Patios;
-     SELECT * FROM Pontos_Leitura;
-     SELECT * FROM Motos;
-     SELECT * FROM Movimentacoes;
-     ```
-
-3. **Cenários de Erro**
-
-   - Teste casos como criar um pátio com `idPatio` duplicado ou deletar uma moto inexistente, por exemplo.
 
 ## Integrantes
 
