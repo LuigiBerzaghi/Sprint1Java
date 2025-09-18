@@ -45,6 +45,15 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 - Username: `sa`
 - Password: (deixe em branco)
 
+### 4. Acessar o apolicativo via login
+  Para acessar o app como um administrador use:
+  - Usuário: admin
+  - Senha: admin123
+ 
+  Para acessar o app como um usuário comum use:
+  - Usuário: user
+  - Senha: user123
+
 ## Estrutura do Projeto
 
 - `com.mottu.trackyard.controller`: Contém os controladores REST.
