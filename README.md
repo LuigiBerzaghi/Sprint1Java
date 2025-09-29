@@ -35,10 +35,6 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-Acesse a aplicação em:
-
-[Trackyard](http://localhost:8080/motos)
-
 ### 3. Acessar o Banco H2
 
 O projeto usa o banco de dados H2 em memória. Acesse em:
