@@ -47,7 +47,7 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 ### 4. Testes
 
   Para realizar os testes na api, basta abrir a tela de login, seguindo a seguinte rota:
-  [login](http://http://localhost:8080/login)
+  [login](http://localhost:8080/login)
 
   Para acessar o app como um administrador use:
   - Usuário: admin
