@@ -46,23 +46,12 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 
 ### 4. Testes
 
-  Para realizar os testes na api, basta abrir a tela de login, seguindo a seguinte rota:
-  [login](http://localhost:8080/login)
-
-  Para acessar o app como um administrador use:
-  - Usuário: admin
-  - Senha: admin123
- 
-  Para acessar o app como um usuário comum use:
-  - Usuário: user
-  - Senha: user123
-
-  Feito isso, é possível testar a API através da interface gráfica.
-
+  Para realizar os testes na api, testar os endpoints com a coleção do Postman, seguindo a seguinte rota:
+  [Postman](https://bold-zodiac-707210.postman.co/workspace/Personal-Workspace~4701d561-f092-46f6-a63c-0560d2fd1507/collection/39387306-06cd5d63-7cab-4aaf-9c69-e5983de04042?action=share&source=copy-link&creator=39387306)
+   
 ## Estrutura do Projeto
 
 - `com.mottu.trackyard.controller`: Contém os controladores REST.
-- `com.mottu.trackyard.controller.web`: Contém os controladores REST para ThymeLeaf.
 - `com.mottu.trackyard.service`: Contém os serviços.
 - `com.mottu.trackyard.entity`: Contém as entidades modelo.
 - `com.mottu.trackyard.repository`: Contém os repositórios JPA.
