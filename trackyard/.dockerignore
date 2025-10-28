@@ -1,0 +1,21 @@
+# Build output
+target
+
+# Maven wrapper and metadata (not needed in container context)
+.mvn
+mvnw
+mvnw.cmd
+
+# VCS
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# OS files
+*.DS_Store
+Thumbs.db
+
