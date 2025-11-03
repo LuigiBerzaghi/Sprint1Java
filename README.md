@@ -9,33 +9,15 @@
 - Gerenciamento de motos.
 - Registro e histórico de movimentações de motos entre pontos de leitura.
 
-## Pré-requisitos
+## Execução
+A aplicação está rodando através de deploy em nuvem (Render)
 
-- **Java 17** ou superior.
-- **Maven**.
-- Uma IDE.
+### Testes
 
-## Configuração e Execução
+Para realizar os testes na api, testar os endpoints com a coleção do Postman, seguindo a seguinte rota:
+[Postman](https://bold-zodiac-707210.postman.co/workspace/Personal-Workspace~4701d561-f092-46f6-a63c-0560d2fd1507/collection/39387306-06cd5d63-7cab-4aaf-9c69-e5983de04042?action=share&source=copy-link&creator=39387306)
 
-### 1. Clonar o Repositório
-
-Clone o projeto para sua máquina local:
-
-```bash
-git clone https://github.com/LuigiBerzaghi/Sprint1Java.git
-cd Sprint1Java/trackyard
-```
-
-### 2. Build e Execução
-
-Compile e execute a aplicação usando Maven:
-
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-### 3. Acessar o Banco H2
+## Acessar o Banco H2 (opicional)
 
 O projeto usa o banco de dados H2 em memória. Acesse em:
 
@@ -43,11 +25,6 @@ O projeto usa o banco de dados H2 em memória. Acesse em:
 - JDBC URL: `jdbc:h2:mem:trackyard`
 - Username: `sa`
 - Password: (deixe em branco)
-
-### 4. Testes
-
-  Para realizar os testes na api, testar os endpoints com a coleção do Postman, seguindo a seguinte rota:
-  [Postman](https://bold-zodiac-707210.postman.co/workspace/Personal-Workspace~4701d561-f092-46f6-a63c-0560d2fd1507/collection/39387306-06cd5d63-7cab-4aaf-9c69-e5983de04042?action=share&source=copy-link&creator=39387306)
    
 ## Estrutura do Projeto
 
